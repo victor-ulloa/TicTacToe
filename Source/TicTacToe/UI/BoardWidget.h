@@ -10,7 +10,7 @@ class UPanelWidget;
 class UImage;
 class UUniformGridPanel;
 class UButton;
-class UTexture2D;
+class UCustomButton;
 /**
  *
  */
@@ -35,7 +35,7 @@ public:
 	UUniformGridPanel *GameGrid;
 
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
-	UButton *Button_0_0;
+	UCustomButton *Button_0_0;
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
 	UButton *Button_0_1;
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
@@ -54,14 +54,6 @@ public:
 	UButton *Button_2_2;
 
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "Images")
-	UTexture2D *XImage;
-	UPROPERTY(EditDefaultsOnly, Category = "Images")
-	UTexture2D *OImage;
-
-	UFUNCTION()
-	void OnButtonPressed();
-
 	UButton *Buttons[3][3];
 
 	void initButtons();
