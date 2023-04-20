@@ -7,8 +7,9 @@
 #include "CustomButton.generated.h"
 
 class UTexture2D;
+class UCustomButton;
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBUIOnClickedSignature, class UCustomButton *, Button);
+DECLARE_DELEGATE(FOnClickedSignature);
 
 /**
  *
@@ -17,9 +18,9 @@ UCLASS()
 class TICTACTOE_API UCustomButton : public UUserWidget
 {
 	GENERATED_BODY()
+
 public:
-	// Bind a function with the signature "void OnClicked(UBUIUWButton* Button);
-	FBUIOnClickedSignature OnClickedDelegate;
+	FOnClickedSignature OnClickedDelegate;
 
 protected:
 	virtual void NativeConstruct() override;
@@ -38,5 +39,14 @@ private:
 	UTexture2D *OImage;
 
 public:
+
+	enum ButtonState {
+		X,
+		O,
+		NONE,
+	};
+
+	ButtonState State = ButtonState::NONE;
+	
 	void drawImage(bool isPlayer = true);
 };

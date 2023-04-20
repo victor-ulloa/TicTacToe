@@ -14,10 +14,12 @@ void UCustomButton::NativeConstruct()
 void UCustomButton::OnButtonClicked()
 {
     drawImage();
+    OnClickedDelegate.ExecuteIfBound();
 }
 
 void UCustomButton::drawImage(bool isPlayer)
 {
+    State = isPlayer ? ButtonState::X : ButtonState::O;
     MainButton->SetIsEnabled(false);
     MainButton->WidgetStyle.Normal.SetResourceObject(isPlayer ? XImage : OImage);
     MainButton->WidgetStyle.Disabled.TintColor;

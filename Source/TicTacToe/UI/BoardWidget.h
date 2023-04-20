@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "TicTacToe/OptimalMovement.cpp"
 #include "BoardWidget.generated.h"
 
 class UPanelWidget;
@@ -54,6 +55,10 @@ public:
 
 private:
 	void initButtons();
+	OptimalMovement manager;
+
+	UFUNCTION()
+	void OnButtonClicked();
 
 public:
 	UCustomButton *Buttons[3][3];
