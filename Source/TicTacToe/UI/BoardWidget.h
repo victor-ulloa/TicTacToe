@@ -9,7 +9,6 @@
 class UPanelWidget;
 class UImage;
 class UUniformGridPanel;
-class UButton;
 class UCustomButton;
 /**
  *
@@ -37,24 +36,25 @@ public:
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
 	UCustomButton *Button_0_0;
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
-	UButton *Button_0_1;
+	UCustomButton *Button_0_1;
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
-	UButton *Button_0_2;
+	UCustomButton *Button_0_2;
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
-	UButton *Button_1_0;
+	UCustomButton *Button_1_0;
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
-	UButton *Button_1_1;
+	UCustomButton *Button_1_1;
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
-	UButton *Button_1_2;
+	UCustomButton *Button_1_2;
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
-	UButton *Button_2_0;
+	UCustomButton *Button_2_0;
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
-	UButton *Button_2_1;
+	UCustomButton *Button_2_1;
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
-	UButton *Button_2_2;
+	UCustomButton *Button_2_2;
 
 private:
-	UButton *Buttons[3][3];
-
 	void initButtons();
+
+public:
+	UCustomButton *Buttons[3][3];
 };

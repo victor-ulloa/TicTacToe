@@ -36,4 +36,7 @@ private:
 	UTexture2D *XImage;
 	UPROPERTY(EditDefaultsOnly, Category = "Images")
 	UTexture2D *OImage;
+
+public:
+	void drawImage(bool isPlayer = true);
 };

@@ -13,8 +13,12 @@ void UCustomButton::NativeConstruct()
 
 void UCustomButton::OnButtonClicked()
 {
-    UE_LOG(LogTemp, Display, TEXT("HERE 2"));
+    drawImage();
+}
+
+void UCustomButton::drawImage(bool isPlayer)
+{
     MainButton->SetIsEnabled(false);
-    MainButton->WidgetStyle.Normal.SetResourceObject(XImage);
+    MainButton->WidgetStyle.Normal.SetResourceObject(isPlayer ? XImage : OImage);
     MainButton->WidgetStyle.Disabled.TintColor;
 }

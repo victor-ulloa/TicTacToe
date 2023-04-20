@@ -3,17 +3,30 @@
 #include "BoardWidget.h"
 #include "Components/Button.h"
 #include "CustomButton.h"
+#include "Kismet/GameplayStatics.h"
+#include "TicTacToe/TicTacToeGameModeBase.h"
 
 void UBoardWidget::NativeConstruct()
 {
     Super::NativeConstruct();
+
+    APlayerController *PC = GetWorld()->GetFirstPlayerController();
+	if (PC)
+	{
+		PC->bShowMouseCursor = true;
+		PC->bEnableClickEvents = true;
+		PC->bEnableMouseOverEvents = true;
+	}
+
+    ATicTacToeGameModeBase* GameMode = Cast<ATicTacToeGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()));
+    GameMode->SetBoard(this);
 
     initButtons();
 }
 
 void UBoardWidget::initButtons()
 {
-    // Buttons[0][0] = Button_0_0;
+    Buttons[0][0] = Button_0_0;
     Buttons[0][1] = Button_0_1;
     Buttons[0][2] = Button_0_2;
     Buttons[1][0] = Button_1_0;
@@ -22,5 +35,4 @@ void UBoardWidget::initButtons()
     Buttons[2][0] = Button_2_0;
     Buttons[2][1] = Button_2_1;
     Buttons[2][2] = Button_2_2;
-
 }
