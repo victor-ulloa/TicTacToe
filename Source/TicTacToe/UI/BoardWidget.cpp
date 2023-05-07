@@ -47,7 +47,7 @@ void UBoardWidget::initButtons()
 
 void UBoardWidget::OnButtonClicked()
 {
-    Position p = manager.FindBestMove_(Buttons);
+    Position p = manager.FindBestMove(Buttons);
 
     for (int i = 0; i < 3; i++)
     {
