@@ -37,5 +37,12 @@ void UCustomButton::drawImage(bool isPlayer)
     State = isPlayer ? ButtonState::X : ButtonState::O;
     MainButton->SetIsEnabled(false);
     MainButton->WidgetStyle.Normal.SetResourceObject(isPlayer ? XImage : OImage);
-    MainButton->WidgetStyle.Disabled.TintColor;
+    // MainButton->WidgetStyle.Disabled.TintColor;
+}
+
+void UCustomButton::clear()
+{
+    State = ButtonState::NONE;
+    MainButton->SetIsEnabled(true);
+    MainButton->WidgetStyle.Normal.SetResourceObject(nullptr);
 }

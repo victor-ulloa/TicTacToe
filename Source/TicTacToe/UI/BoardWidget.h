@@ -64,4 +64,6 @@ private:
 
 public:
 	UCustomButton *Buttons[3][3];
+
+	void resetBoard();
 };

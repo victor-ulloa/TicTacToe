@@ -50,4 +50,5 @@ public:
 	
 	char ToChar();
 	void drawImage(bool isPlayer = true);
+	void clear();
 };

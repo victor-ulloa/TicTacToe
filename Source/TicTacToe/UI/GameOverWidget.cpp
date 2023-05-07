@@ -2,6 +2,9 @@
 
 #include "GameOverWidget.h"
 #include "Components/Button.h"
+#include "Kismet/GameplayStatics.h"
+#include "BaseUIManager.h"
+#include "TicTacToe/TicTacToeGameModeBase.h"
 
 void UGameOverWidget::NativeConstruct()
 {
@@ -11,5 +14,7 @@ void UGameOverWidget::NativeConstruct()
 
 void UGameOverWidget::OnRestartButtonClicked()
 {
-    
+    if (ATicTacToeGameModeBase *GameMode = Cast<ATicTacToeGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()))) {
+        GameMode->UIManager->DismissGameOverWidget();
+    }
 }
