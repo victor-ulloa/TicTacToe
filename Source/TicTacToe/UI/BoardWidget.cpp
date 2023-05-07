@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BoardWidget.h"
-#include "Components/Button.h"
 #include "CustomButton.h"
 #include "Kismet/GameplayStatics.h"
+#include "BaseUIManager.h"
 #include "TicTacToe/TicTacToeGameModeBase.h"
 
 void UBoardWidget::NativeConstruct()
@@ -48,30 +48,30 @@ void UBoardWidget::initButtons()
 void UBoardWidget::OnButtonClicked()
 {
     Position p = manager.FindBestMove(Buttons);
-
-    for (int i = 0; i < 3; i++)
+    if (p.col == -1 || p.row == -1)
     {
-        for (int j = 0; j < 3; j++)
-        {
-            switch (Buttons[i][j]->State)
-            {
-            case UCustomButton::ButtonState::X:
-                UE_LOG(LogTemp, Display, TEXT("X"));
-                break;
-
-            case UCustomButton::ButtonState::O:
-                UE_LOG(LogTemp, Display, TEXT("O"));
-                break;
-
-            case UCustomButton::ButtonState::NONE:
-                UE_LOG(LogTemp, Display, TEXT("_"));
-                break;
-
-            default:
-                break;
-            }
-        }
+        UE_LOG(LogTemp, Display, TEXT("TIE"));
+        displayEnd(true);
+        return;
     }
 
     Buttons[p.row][p.col]->drawImage(false);
+
+    int evaluate = manager.EvaluateBoard(Buttons);
+    if (evaluate == -10) {
+        UE_LOG(LogTemp, Display, TEXT("PC WON GAME"));
+        displayEnd(false);
+        return;
+    }
+
+    // UE_LOG(LogTemp, Display, TEXT("%c %c %c"), Buttons[0][0]->ToChar(), Buttons[0][1]->ToChar(), Buttons[0][2]->ToChar());
+    // UE_LOG(LogTemp, Display, TEXT("%c %c %c"), Buttons[1][0]->ToChar(), Buttons[1][1]->ToChar(), Buttons[1][2]->ToChar());
+    // UE_LOG(LogTemp, Display, TEXT("%c %c %c"), Buttons[2][0]->ToChar(), Buttons[2][1]->ToChar(), Buttons[2][2]->ToChar());
+}
+
+void UBoardWidget::displayEnd(bool IsTie)
+{
+    if (ATicTacToeGameModeBase *GameMode = Cast<ATicTacToeGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()))) {
+        GameMode->UIManager->DisplayGameOverWidget(IsTie);
+    }
 }

@@ -189,7 +189,7 @@ struct OptimalMovement
             }
         }
 
-        UE_LOG(LogTemp, Display, TEXT("%i   %i"), bestMove.col, bestMove.row);
+        // UE_LOG(LogTemp, Display, TEXT("%i   %i"), bestMove.col, bestMove.row);
 
         return bestMove;
     }

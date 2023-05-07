@@ -60,6 +60,8 @@ private:
 	UFUNCTION()
 	void OnButtonClicked();
 
+	void displayEnd(bool IsTie);
+
 public:
 	UCustomButton *Buttons[3][3];
 };

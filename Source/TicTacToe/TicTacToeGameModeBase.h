@@ -7,6 +7,7 @@
 #include "TicTacToeGameModeBase.generated.h"
 
 class UBoardWidget;
+class ABaseUIManager;
 /**
  *
  */
@@ -19,5 +20,9 @@ private:
 	UBoardWidget *Board;
 
 public:
+
+	ABaseUIManager *UIManager;
+
 	void SetBoard(UBoardWidget *NewBoard);
+	void SetManager(ABaseUIManager *NewUIManager);
 };

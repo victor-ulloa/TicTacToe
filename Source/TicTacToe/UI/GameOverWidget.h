@@ -18,6 +18,8 @@ UCLASS()
 class TICTACTOE_API UGameOverWidget : public UUserWidget
 {
 	GENERATED_BODY()
+protected:
+	virtual void NativeConstruct() override;
 
 public:
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
@@ -28,4 +30,8 @@ public:
 	UTextBlock *GameOverText;
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
 	UButton *RestartButton;
+
+private:
+	UFUNCTION()
+	void OnRestartButtonClicked();
 };

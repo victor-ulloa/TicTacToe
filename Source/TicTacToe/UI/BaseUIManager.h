@@ -7,7 +7,6 @@
 #include "BaseUIManager.generated.h"
 
 class UUserWidget;
-
 UCLASS()
 class TICTACTOE_API ABaseUIManager : public AActor
 {
@@ -24,13 +23,21 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Widget")
 	TSubclassOf<UUserWidget> RootWidget;
+	UPROPERTY(EditAnywhere, Category = "Widget")
+	TSubclassOf<UUserWidget> GameOverWidget;
 
 	UFUNCTION()
 	void DisplayWidget();
 	UFUNCTION()
 	void DismissWidget();
 
+	UFUNCTION()
+	void DisplayGameOverWidget(bool IsTie);
+	UFUNCTION()
+	void DismissGameOverWidget();
+
 private:
 	UUserWidget *_RootWidget;
+	UUserWidget *_GameOverWidget;
 
 };

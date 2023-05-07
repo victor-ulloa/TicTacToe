@@ -48,5 +48,6 @@ public:
 
 	ButtonState State = ButtonState::NONE;
 	
+	char ToChar();
 	void drawImage(bool isPlayer = true);
 };

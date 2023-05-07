@@ -17,6 +17,21 @@ void UCustomButton::OnButtonClicked()
     OnClickedDelegate.ExecuteIfBound();
 }
 
+char UCustomButton::ToChar()
+{
+     switch (State)
+            {
+            case UCustomButton::ButtonState::X:
+                return 'X';
+
+            case UCustomButton::ButtonState::O:
+                return 'O';
+
+            default:
+                return '_';
+            }
+}
+
 void UCustomButton::drawImage(bool isPlayer)
 {
     State = isPlayer ? ButtonState::X : ButtonState::O;

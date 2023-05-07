@@ -9,3 +9,10 @@ void ATicTacToeGameModeBase::SetBoard(UBoardWidget *NewBoard)
 {
     Board = NewBoard;
 }
+
+void ATicTacToeGameModeBase::SetManager(ABaseUIManager *NewUIManager)
+{
+    if (!UIManager){
+        UIManager = NewUIManager;
+    }
+}
